@@ -1,0 +1,35 @@
+.projects-section {
+  margin-top: 24px;
+  background: #1e293b;
+  padding: 24px;
+  border-radius: 14px;
+  border: 1px solid #334155;
+}
+
+.projects-section h2 {
+  margin: 0 0 12px;
+  color: #f8fafc;
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+}
+
+.project-card {
+  background: #0f172a;
+  border: 1px solid #334155;
+  border-radius: 10px;
+  padding: 16px;
+}
+
+.project-card h3 {
+  margin: 0 0 6px;
+  color: #f8fafc;
+}
+
+.project-card p {
+  margin: 0;
+  color: #cbd5e1;
+}

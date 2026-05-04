@@ -1,15 +1,36 @@
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import './HeroSection.css'
 
 function HeroSection() {
   const [isFlipped, setIsFlipped] = useState(false)
+  const [isVisible, setIsVisible] = useState(true)
+  const sectionRef = useRef<HTMLElement>(null)
 
   const handleCoinFlip = () => {
     setIsFlipped((prev) => !prev)
   }
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsVisible(entry.isIntersecting)
+      },
+      { threshold: 0.1 }
+    )
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current)
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current)
+      }
+    }
+  }, [])
+
   return (
-    <section id="home" className="hero-section">
+    <section id="home" className="hero-section" ref={sectionRef}>
       <div className="hero-content">
         <p className="kicker">QA Engineer Portfolio</p>
         <h1>Hi, I am Janitha</h1>
@@ -61,6 +82,13 @@ function HeroSection() {
           </div>
         </div>
       </button>
+
+      {isVisible && (
+        <div className="scroll-indicator">
+          <span className="scroll-indicator__text">Scroll to explore</span>
+          <div className="scroll-indicator__arrow" />
+        </div>
+      )}
     </section>
   )
 }

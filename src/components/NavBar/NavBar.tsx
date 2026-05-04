@@ -15,7 +15,12 @@ function NavBar() {
 
   const [activeSection, setActiveSection] = useState('home')
   const [isNavVisible, setIsNavVisible] = useState(false)
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const hideTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen((prev) => !prev)
+  }
 
   const resetHideTimer = () => {
     if (hideTimerRef.current) {
@@ -113,16 +118,28 @@ function NavBar() {
       section.scrollIntoView({ behavior: 'smooth', block: 'start' })
       setActiveSection(sectionId)
     }
+    setIsMobileMenuOpen(false)
   }
 
   return (
-    <nav
-      className={`navbar ${isNavVisible ? 'visible' : 'hidden'}`}
-      aria-label="Main navigation"
-      onMouseEnter={handleNavMouseEnter}
-      onMouseLeave={handleNavMouseLeave}
-    >
-      <ul>
+    <>
+      <button
+        className={`navbar__hamburger ${isMobileMenuOpen ? 'navbar__hamburger--active' : ''}`}
+        onClick={toggleMobileMenu}
+        aria-label="Toggle menu"
+        aria-expanded={isMobileMenuOpen}
+      >
+        <span className="hamburger__line" />
+        <span className="hamburger__line" />
+        <span className="hamburger__line" />
+      </button>
+      <nav
+        className={`navbar ${isNavVisible ? 'visible' : 'hidden'}`}
+        aria-label="Main navigation"
+        onMouseEnter={handleNavMouseEnter}
+        onMouseLeave={handleNavMouseLeave}
+      >
+        <ul className={`navbar__menu ${isMobileMenuOpen ? 'navbar__menu--open' : ''}`}>
         {navItems.map((item) => (
           <li key={item.id}>
             <a
@@ -136,7 +153,8 @@ function NavBar() {
           </li>
         ))}
       </ul>
-    </nav>
+      </nav>
+    </>
   )
 }
 

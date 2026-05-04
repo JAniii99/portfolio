@@ -259,6 +259,61 @@
   }
 }
 
+/* ── Scroll Indicator ─────────────────────────────────────── */
+.scroll-indicator {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  animation: fadeInScrollIndicator 1s ease-out 0.8s both;
+}
+
+@keyframes fadeInScrollIndicator {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.scroll-indicator__text {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #64748b;
+  transition: color 0.3s ease;
+}
+
+.scroll-indicator__arrow {
+  width: 24px;
+  height: 24px;
+  border: 2px solid #64748b;
+  border-top: none;
+  border-left: none;
+  border-radius: 2px;
+  transform: rotate(45deg) translateX(-2px);
+  animation: bounceArrow 2s infinite;
+}
+
+@keyframes bounceArrow {
+  0% {
+    transform: rotate(45deg) translateY(0);
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: rotate(45deg) translateY(12px);
+    opacity: 0.4;
+  }
+}
+
 @media (max-width: 767px) {
   .hero-actions {
     flex-wrap: wrap;
@@ -266,5 +321,9 @@
 
   .btn {
     width: 100%;
+  }
+
+  .scroll-indicator {
+    bottom: 16px;
   }
 }

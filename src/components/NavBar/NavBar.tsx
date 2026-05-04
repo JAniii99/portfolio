@@ -1,6 +1,5 @@
 import { useEffect, useMemo, useState, useRef, type MouseEvent } from 'react'
 import './NavBar.css'
-import { FaArrowLeft } from "react-icons/fa6";
 
 function NavBar() {
   const navItems = useMemo(
@@ -42,11 +41,31 @@ function NavBar() {
     }
   }, [])
 
-  const handleArrowClick = () => {
-    setIsNavVisible(!isNavVisible)
-    if (!isNavVisible) {
-      resetHideTimer()
+  useEffect(() => {
+    const handleMouseMove = (e: globalThis.MouseEvent) => {
+      const leftEdgeThreshold = 30
+      if (e.clientX < leftEdgeThreshold) {
+        setIsNavVisible(true)
+        if (hideTimerRef.current) {
+          clearTimeout(hideTimerRef.current)
+        }
+      }
     }
+
+    window.addEventListener('mousemove', handleMouseMove, { passive: true })
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove)
+    }
+  }, [])
+
+  const handleNavMouseEnter = () => {
+    if (hideTimerRef.current) {
+      clearTimeout(hideTimerRef.current)
+    }
+  }
+
+  const handleNavMouseLeave = () => {
+    resetHideTimer()
   }
 
   useEffect(() => {
@@ -97,15 +116,12 @@ function NavBar() {
   }
 
   return (
-    <nav className={`navbar ${isNavVisible ? 'visible' : 'hidden'}`} aria-label="Main navigation">
-      {/* <button
-        className="nav-toggle"
-        onClick={handleArrowClick}
-        aria-label="Toggle navigation"
-        aria-expanded={isNavVisible}
-      >
-        <span className="arrow"><FaArrowLeft /></span>
-      </button> */}
+    <nav
+      className={`navbar ${isNavVisible ? 'visible' : 'hidden'}`}
+      aria-label="Main navigation"
+      onMouseEnter={handleNavMouseEnter}
+      onMouseLeave={handleNavMouseLeave}
+    >
       <ul>
         {navItems.map((item) => (
           <li key={item.id}>

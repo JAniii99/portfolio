@@ -34,7 +34,7 @@
 .navbar a.active {
   color: #f8fafc;
   font-weight: 500;
-  font-size:30px;
+  font-size:25px;
 }
 
 .navbar a:hover {

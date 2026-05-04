@@ -54,31 +54,36 @@ function NavBar() {
       .map((item) => document.getElementById(item.id))
       .filter((section): section is HTMLElement => Boolean(section))
 
-    const scrollRoot = document.querySelector('.page')
+    const scrollRoot = document.querySelector('.page') as HTMLElement | null
     if (!sections.length || !scrollRoot) {
       return
     }
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visibleEntries = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)
+    const updateActiveSection = () => {
+      const rootRect = scrollRoot.getBoundingClientRect()
+      const targetLine = rootRect.top + rootRect.height * 0.32
 
-        if (visibleEntries.length > 0) {
-          setActiveSection(visibleEntries[0].target.id)
+      let nearestSectionId = sections[0].id
+      let nearestDistance = Number.POSITIVE_INFINITY
+
+      sections.forEach((section) => {
+        const rect = section.getBoundingClientRect()
+        const distance = Math.abs(rect.top - targetLine)
+
+        if (distance < nearestDistance) {
+          nearestDistance = distance
+          nearestSectionId = section.id
         }
-      },
-      {
-        root: scrollRoot,
-        threshold: [0.35, 0.55, 0.75],
-      }
-    )
+      })
 
-    sections.forEach((section) => observer.observe(section))
+      setActiveSection((prev) => (prev === nearestSectionId ? prev : nearestSectionId))
+    }
+
+    updateActiveSection()
+    scrollRoot.addEventListener('scroll', updateActiveSection, { passive: true })
 
     return () => {
-      observer.disconnect()
+      scrollRoot.removeEventListener('scroll', updateActiveSection)
     }
   }, [navItems])
 

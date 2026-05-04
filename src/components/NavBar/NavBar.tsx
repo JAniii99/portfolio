@@ -1,5 +1,6 @@
-import { useEffect, useMemo, useState, type MouseEvent } from 'react'
+import { useEffect, useMemo, useState, useRef, type MouseEvent } from 'react'
 import './NavBar.css'
+import { FaArrowLeft } from "react-icons/fa6";
 
 function NavBar() {
   const navItems = useMemo(
@@ -14,6 +15,39 @@ function NavBar() {
   )
 
   const [activeSection, setActiveSection] = useState('home')
+  const [isNavVisible, setIsNavVisible] = useState(false)
+  const hideTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+
+  const resetHideTimer = () => {
+    if (hideTimerRef.current) {
+      clearTimeout(hideTimerRef.current)
+    }
+    hideTimerRef.current = setTimeout(() => {
+      setIsNavVisible(false)
+    }, 5000)
+  }
+
+  useEffect(() => {
+    const scrollRoot = document.querySelector('.page')
+    if (!scrollRoot) return
+
+    const handleScroll = () => {
+      setIsNavVisible(true)
+      resetHideTimer()
+    }
+
+    scrollRoot.addEventListener('scroll', handleScroll, { passive: true })
+    return () => {
+      scrollRoot.removeEventListener('scroll', handleScroll)
+    }
+  }, [])
+
+  const handleArrowClick = () => {
+    setIsNavVisible(!isNavVisible)
+    if (!isNavVisible) {
+      resetHideTimer()
+    }
+  }
 
   useEffect(() => {
     const sections = navItems
@@ -58,7 +92,15 @@ function NavBar() {
   }
 
   return (
-    <nav className="navbar" aria-label="Main navigation">
+    <nav className={`navbar ${isNavVisible ? 'visible' : 'hidden'}`} aria-label="Main navigation">
+      <button
+        className="nav-toggle"
+        onClick={handleArrowClick}
+        aria-label="Toggle navigation"
+        aria-expanded={isNavVisible}
+      >
+        <span className="arrow"><FaArrowLeft /></span>
+      </button>
       <ul>
         {navItems.map((item) => (
           <li key={item.id}>

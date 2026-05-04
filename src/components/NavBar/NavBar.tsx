@@ -24,7 +24,7 @@ function NavBar() {
     }
     hideTimerRef.current = setTimeout(() => {
       setIsNavVisible(false)
-    }, 5000)
+    }, 1500)
   }
 
   useEffect(() => {
@@ -98,14 +98,14 @@ function NavBar() {
 
   return (
     <nav className={`navbar ${isNavVisible ? 'visible' : 'hidden'}`} aria-label="Main navigation">
-      <button
+      {/* <button
         className="nav-toggle"
         onClick={handleArrowClick}
         aria-label="Toggle navigation"
         aria-expanded={isNavVisible}
       >
         <span className="arrow"><FaArrowLeft /></span>
-      </button>
+      </button> */}
       <ul>
         {navItems.map((item) => (
           <li key={item.id}>

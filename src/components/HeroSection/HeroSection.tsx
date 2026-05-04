@@ -46,7 +46,7 @@ function HeroSection() {
           <div className="coin__face coin__face--front">
             <div className="coin__rim" />
             <div className="coin__image-wrap">
-              <img src="/wawehand.png" alt="Janitha profile" className="coin__image" />
+              <img src="/image.jpg" alt="Janitha profile" className="coin__image" />
             </div>
             <div className="coin__shine" />
           </div>
@@ -55,7 +55,7 @@ function HeroSection() {
           <div className="coin__face coin__face--back">
             <div className="coin__rim" />
             <div className="coin__image-wrap">
-              <img src="/image.jpg" alt="Janitha profile back" className="coin__image" />
+              <img src="/hello.gif" alt="Janitha profile back" className="coin__image" />
             </div>
             <div className="coin__shine coin__shine--back" />
           </div>

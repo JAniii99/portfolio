@@ -59,7 +59,6 @@ function NavBar() {
 
   return (
     <nav className="navbar" aria-label="Main navigation">
-      <div className="brand">Janitha QA</div>
       <ul>
         {navItems.map((item) => (
           <li key={item.id}>

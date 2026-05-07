@@ -64,6 +64,11 @@
   flex-direction: column;
 }
 
+/* mobile swiper hidden by default; shown in media queries */
+.mobile-swiper {
+  display: none;
+}
+
 .timeline-item {
   position: relative;
   padding: 14px 0 14px 20px;
@@ -204,14 +209,61 @@
 }
 
 /* Mobile */
+@media (max-width: 1023px) {
+  /* Show swiper on tablet and smaller; hide desktop timeline */
+  .timeline {
+    display: none;
+  }
+
+  .mobile-swiper {
+    display: block;
+    margin-top: 8px;
+  }
+
+  .swipe-track {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .swipe-slide {
+    scroll-snap-align: start;
+    flex: 0 0 100%;
+    box-sizing: border-box;
+    padding: 12px;
+    background: transparent;
+    border-radius: 10px;
+    min-height: 120px;
+  }
+
+  .swipe-dots {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    margin-top: 12px;
+  }
+
+  .swipe-dots .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #334155;
+    border: none;
+    padding: 0;
+  }
+
+  .swipe-dots .dot.active {
+    background: #94a3b8;
+    transform: scale(1.2);
+  }
+}
+
 @media (max-width: 480px) {
   .experience-section {
     padding: 16px;
     border-radius: 12px;
-  }
-
-  .timeline {
-    
   }
 
   .company-logo {

@@ -328,4 +328,7 @@
   .scroll-indicator {
     bottom: 16px;
   }
+  .hero-section {
+  gap: 50px;
+}
 }

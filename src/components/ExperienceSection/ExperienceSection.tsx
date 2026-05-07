@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import './ExperienceSection.css'
 
 const mainExperience = {
@@ -52,18 +52,31 @@ const mainExperience = {
   ],
 }
 
-const olderExperiences = [
-  {
-    title: 'QA Testing Trainee',
-    type: 'Internship',
-    period: '2023 – 2024',
-    location: 'Colombo, Sri Lanka',
-    note: 'Learned test design techniques, defect lifecycle management, and API testing basics using Postman.',
-  },
-]
+// olderExperiences removed (history remains in VCS)
 
 function ExperienceSection() {
-  const [showMore, setShowMore] = useState(false)
+  // no show-more state required for current UI
+  const trackRef = useRef<HTMLDivElement | null>(null)
+  const [activeSlide, setActiveSlide] = useState(0)
+
+  useEffect(() => {
+    const el = trackRef.current
+    if (!el) return
+    const onScroll = () => {
+      const slideWidth = el.clientWidth
+      const index = Math.round(el.scrollLeft / slideWidth)
+      setActiveSlide(index)
+    }
+    el.addEventListener('scroll', onScroll, { passive: true })
+    return () => el.removeEventListener('scroll', onScroll)
+  }, [])
+
+  const scrollTo = (i: number) => {
+    const el = trackRef.current
+    if (!el) return
+    const slideWidth = el.clientWidth
+    el.scrollTo({ left: i * slideWidth, behavior: 'smooth' })
+  }
 
   return (
     <section id="experience" className="experience-section">
@@ -80,6 +93,7 @@ function ExperienceSection() {
           </div>
         </div>
 
+        {/* Desktop timeline (kept unchanged) */}
         <div className="timeline">
           {mainExperience.roles.map((role, i) => (
             <div key={role.title} className="timeline-item">
@@ -107,6 +121,40 @@ function ExperienceSection() {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Mobile-only swiper: visible via CSS on small screens */}
+        <div className="mobile-swiper" aria-hidden>
+          <div className="swipe-track" ref={trackRef}>
+            {mainExperience.roles.map((role) => (
+              <article key={role.title} className="swipe-slide">
+                <p className="role-title">{role.title}</p>
+                <p className="role-meta">{role.type} · {role.period}</p>
+                <p className="role-location">{role.location}</p>
+                {role.bullets && (
+                  <ul className="role-bullets">
+                    {role.bullets.map((b) => (
+                      <li key={b}>{b}</li>
+                    ))}
+                  </ul>
+                )}
+                {role.note && <p className="role-note">{role.note}</p>}
+                {role.skills && (
+                  <div className="skills-tag">🛠 {role.skills}</div>
+                )}
+              </article>
+            ))}
+          </div>
+          <div className="swipe-dots">
+            {mainExperience.roles.map((_, i) => (
+              <button
+                key={i}
+                className={`dot ${activeSlide === i ? 'active' : ''}`}
+                onClick={() => scrollTo(i)}
+                aria-label={`Go to slide ${i + 1}`}
+              />
+            ))}
+          </div>
         </div>
       </div>
 

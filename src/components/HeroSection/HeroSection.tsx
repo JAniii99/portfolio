@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import './HeroSection.css'
+import { GoDownload } from "react-icons/go";
 
 function HeroSection() {
   const [isFlipped, setIsFlipped] = useState(false)
@@ -48,7 +49,7 @@ function HeroSection() {
             Contact Me
           </a>
           <a href="/Janitha-CV.pdf" className="btn btn-secondary" download>
-            Download CV
+            <GoDownload size={15} /> Download CV 
           </a>
         </div>
       </div>

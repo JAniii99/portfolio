@@ -96,9 +96,8 @@ export default function ToolsSection() {
     return () => clearInterval(interval)
   }, [pages])
 
-  const row1 = tools.slice(0, 4)
-  const row2 = tools.slice(4, 7)
-  const row3 = tools.slice(7, 10)
+  const row1 = tools.slice(0, 5)
+  const row2 = tools.slice(5, 10)
 
   const mobileItems = tools
 
@@ -106,26 +105,19 @@ export default function ToolsSection() {
     <section id="tools" className="tools-section">
       <h2>Tools</h2>
 
-      {/* Desktop grid: 4-3-3 */}
+      {/* Desktop grid: 5-5 */}
       <div className="desktop-grid">
-        <div className="grid-row" style={{ gridTemplateColumns: 'repeat(4, 1fr)' }}>
+        <div className="grid-row" style={{ gridTemplateColumns: 'repeat(5, 1fr)' }}>
           {row1.map((tool, i) => (
             <div key={tool.name} className="circle-cell">
               <FlipCard tool={tool} isFlipped={!!flipped[i]} onClick={() => handleFlip(i)} />
             </div>
           ))}
         </div>
-        <div className="grid-row" style={{ gridTemplateColumns: 'repeat(3, 1fr)' }}>
+        <div className="grid-row" style={{ gridTemplateColumns: 'repeat(5, 1fr)' }}>
           {row2.map((tool, i) => (
             <div key={tool.name} className="circle-cell">
-              <FlipCard tool={tool} isFlipped={!!flipped[i + 4]} onClick={() => handleFlip(i + 4)} />
-            </div>
-          ))}
-        </div>
-        <div className="grid-row" style={{ gridTemplateColumns: 'repeat(3, 1fr)' }}>
-          {row3.map((tool, i) => (
-            <div key={tool.name} className="circle-cell">
-              <FlipCard tool={tool} isFlipped={!!flipped[i + 7]} onClick={() => handleFlip(i + 7)} />
+              <FlipCard tool={tool} isFlipped={!!flipped[i + 5]} onClick={() => handleFlip(i + 5)} />
             </div>
           ))}
         </div>

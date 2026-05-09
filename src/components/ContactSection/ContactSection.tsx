@@ -56,7 +56,7 @@ function ContactSection() {
         </a>
       </div>
 
-      <a className="cv-btn" href="/Janitha's CV.pdf" download>
+      <a className="cv-btn" href="/Janitha's_CV.pdf" download>
         <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
           <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
           <polyline points="7 10 12 15 17 10"/>

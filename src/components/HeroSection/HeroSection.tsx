@@ -47,7 +47,7 @@ function HeroSection() {
           <a href="#contact" className="btn btn-primary">
             Contact Me
           </a>
-          <a href="/Janitha's CV.pdf" className="btn btn-secondary" download>
+          <a href="/Janitha's_CV.pdf" className="btn btn-secondary" download>
             <GoDownload size={15} /> Download CV 
           </a>
         </div>

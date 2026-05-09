@@ -39,7 +39,7 @@ const STATS: Stat[] = [
     color: '#1D9E75',
     trackColor: '#5DCAA5',
     trackOpacity: 0.25,
-    max: 8,
+    max: 4,
   },
   {
     value: 4,
@@ -47,7 +47,7 @@ const STATS: Stat[] = [
     color: '#D85A30',
     trackColor: '#F0997B',
     trackOpacity: 0.25,
-    max: 8,
+    max: 4,
   },
   {
     value: 3,
@@ -55,7 +55,7 @@ const STATS: Stat[] = [
     color: '#378ADD',
     trackColor: '#85B7EB',
     trackOpacity: 0.25,
-    max: 8,
+    max: 5,
   },
 ]
 

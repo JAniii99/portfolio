@@ -4,7 +4,7 @@ function ContactSection() {
   return (
     <section id="contact" className="contact-section">
       <div className="contact-header">
-        <div className="contact-label">Get In Touch</div>
+        <div className="contact-label">Contact Me</div>
         <h2 className="contact-name">Janitha Sandaruwan</h2>
         <p className="contact-desc">
           Open to Software QA opportunities. Feel free to reach

@@ -1,7 +1,7 @@
 {
   "headers": [
     {
-      "source": "/public/(.*\\.pdf)",
+      "source": "\/(.*\\.pdf)",
       "headers": [
         {
           "key": "Content-Type",

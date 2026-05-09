@@ -1,35 +1,209 @@
 .projects-section {
   margin-top: 24px;
-  background: #1e293b;
-  padding: 24px;
-  border-radius: 14px;
-  border: 1px solid #334155;
+  padding: 40px 0 24px;
 }
 
-.projects-section h2 {
-  margin: 0 0 12px;
-  color: #f8fafc;
-}
-
-.project-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 14px;
-}
-
-.project-card {
-  background: #0f172a;
-  border: 1px solid #334155;
-  border-radius: 10px;
-  padding: 16px;
-}
-
-.project-card h3 {
+/* ── Header ── */
+.projects-section__eyebrow {
+  text-align: center;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #94a3b8;
   margin: 0 0 6px;
-  color: #f8fafc;
 }
 
-.project-card p {
-  margin: 0;
+.projects-section__heading {
+  text-align: center;
+  font-size: 50px;
+  font-weight: 500;
+  color: #f8fafc;
+  margin: 0 0 40px;
+}
+
+/* ── Stat Rings ── */
+.projects-stats {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-bottom: 48px;
+}
+
+.stat-ring {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.stat-ring__svg-wrap {
+  position: relative;
+  width: 100px;
+  height: 100px;
+}
+
+.stat-ring__svg-wrap svg {
+  display: block;
+}
+
+.stat-ring__inner {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.stat-ring__number {
+  font-size: 24px;
+  font-weight: 600;
+  color: #f8fafc;
+  line-height: 1;
+}
+
+.stat-ring__label {
+  font-size: 12px;
+  color: #94a3b8;
+  text-align: center;
+  max-width: 90px;
+  line-height: 1.4;
+  font-weight: 500;
+}
+
+.stat-ring__track {
+  transition: none;
+}
+
+.stat-ring__progress {
+  transition: stroke-dashoffset 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: center;
+  transform: rotate(-90deg);
+}
+
+/* ── Slider ── */
+.projects-slider {
+  overflow: hidden;
+  position: relative;
+}
+
+.projects-slider::before,
+.projects-slider::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 80px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.projects-slider::before {
+  left: 0;
+  background: linear-gradient(to right, #0f172a, transparent);
+}
+
+.projects-slider::after {
+  right: 0;
+  background: linear-gradient(to left, #0f172a, transparent);
+}
+
+.projects-slider__track {
+  display: flex;
+  gap: 16px;
+  width: max-content;
+  padding: 4px 0 16px;
+  animation: ps-scroll 24s linear infinite;
+}
+
+.projects-slider__track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes ps-scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ── Project Card ── */
+.proj-card {
+  width: 240px;
+  flex-shrink: 0;
+  background: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 20px;
+  padding: 20px;
+  cursor: pointer;
+  transition: border-color 0.2s ease, transform 0.2s ease, background-color 0.2s ease;
+}
+
+.proj-card:hover {
+  border-color: #38bdf8;
+  transform: translateY(-3px);
+}
+
+.proj-card__icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 14px;
+  font-size: 20px;
+  box-shadow: inset 0 0 0 1px rgba(56, 189, 248, 0.2);
+}
+
+.proj-card__title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #f8fafc;
+  margin: 0 0 6px;
+  line-height: 1.4;
+}
+
+.proj-card__desc {
+  font-size: 12px;
   color: #cbd5e1;
+  margin: 0 0 16px;
+  line-height: 1.6;
+}
+
+.proj-card__links {
+  display: flex;
+  gap: 8px;
+}
+
+.proj-card__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  font-weight: 500;
+  padding: 5px 12px;
+  border-radius: 20px;
+  border: 1px solid #38bdf8;
+  color: #bae6fd;
+  background: rgba(15, 23, 42, 0.55);
+  text-decoration: none;
+  transition: border-color 0.15s, color 0.15s, background-color 0.15s, transform 0.15s;
+}
+
+.proj-card__link:hover {
+  border-color: #7dd3fc;
+  color: #e0f2fe;
+  background: #0f172a;
+  transform: translateY(-1px);
+}
+
+.proj-card__link svg {
+  width: 12px;
+  height: 12px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }

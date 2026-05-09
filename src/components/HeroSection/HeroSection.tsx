@@ -33,9 +33,8 @@ function HeroSection() {
   return (
     <section id="home" className="hero-section" ref={sectionRef}>
       <div className="hero-content">
-        <p className="kicker">QA Engineer Portfolio</p>
         <h1>Hi, I am Janitha</h1>
-        <h2>Quality Assurance Engineer</h2>
+        <h2>Software Quality Assurance Engineer</h2>
         <p>
           I help teams deliver reliable, high-quality software through careful testing, clear test
           strategies, and practical automation using Selenium and Java.
@@ -48,7 +47,7 @@ function HeroSection() {
           <a href="#contact" className="btn btn-primary">
             Contact Me
           </a>
-          <a href="/Janitha-CV.pdf" className="btn btn-secondary" download>
+          <a href="/public/Janitha's CV.pdf" className="btn btn-secondary" download>
             <GoDownload size={15} /> Download CV 
           </a>
         </div>

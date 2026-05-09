@@ -1,34 +1,144 @@
 .contact-section {
   margin-top: 24px;
-  background: #1e293b;
-  padding: 24px;
-  border-radius: 14px;
-  border: 1px solid #334155;
-  text-align: center;
+  /* background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); */
+  padding: 36px 32px;
+  border-radius: 20px;
+  /* border: 1px solid #334155; */
+  position: relative;
+  overflow: hidden;
 }
 
-.contact-section h2 {
-  margin: 0 0 12px;
-  color: #f8fafc;
-}
+/* .contact-section::before {
+  content: '';
+  position: absolute;
+  top: -60px; right: -60px;
+  width: 200px; height: 200px;
+  background: radial-gradient(circle, rgba(56,189,248,0.12) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+} */
 
-.contact-section p {
-  margin: 0 0 14px;
-  color: #cbd5e1;
-}
-
-.contact-links {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 14px;
-}
-
-.contact-links a {
+/* Header */
+.contact-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
   color: #38bdf8;
-  text-decoration: none;
+  margin-bottom: 8px;
 }
 
-.contact-links a:hover {
-  text-decoration: underline;
+.contact-name {
+  font-size: 26px;
+  font-weight: 800;
+  color: #f8fafc;
+  margin-bottom: 10px;
+}
+
+.contact-desc {
+  font-size: 14px;
+  color: #94a3b8;
+  line-height: 1.6;
+}
+
+.contact-divider {
+  height: 1px;
+  background: linear-gradient(90deg, #334155, transparent);
+  margin: 24px 0;
+}
+
+/* Grid */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 480px) {
+  .contact-section { padding: 28px 20px; }
+  .contact-grid { grid-template-columns: 1fr; }
+}
+
+/* Cards */
+.contact-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 12px;
+  padding: 14px 16px;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.2s ease;
+}
+
+.contact-card:hover {
+  background: rgba(15,23,42,0.95);
+  border-color: #38bdf8;
+  transform: translateY(-2px);
+}
+
+.card-icon {
+  width: 36px; height: 36px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 16px;
+}
+
+.icon-email,
+.icon-phone,
+.icon-github,
+.icon-linkedin {
+  background: #0f172a;
+  color: #38bdf8;
+}
+
+.card-label {
+  font-size: 10px;
+  color: #94a3b8;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 2px;
+}
+
+.card-value {
+  font-size: 13px;
+  color: #e2e8f0;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* CV Button */
+.cv-btn {
+  display: flex;
+  align-self: anchor-center;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 50%;
+  padding: 15px 24px;
+  background: linear-gradient(135deg, #0ea5e9, #38bdf8);
+  border: none;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #0f172a;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 20px rgba(56, 189, 248, 0.25);
+}
+
+.cv-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(56, 189, 248, 0.35);
 }

@@ -10,7 +10,7 @@ type Stat = {
   max: number
 }
 
-/*
+
 type Project = {
   icon: React.ReactNode
   iconBg: string
@@ -20,7 +20,7 @@ type Project = {
   demo: string
   github: string
 }
-*/
+
 
 // ── Data ─────────────────────────────────────────────────────────────────────
 
@@ -59,41 +59,43 @@ const STATS: Stat[] = [
   },
 ]
 
-/*
+
 const PROJECTS: Project[] = [
+  // {
+  //   icon: (
+  //     <svg viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+  //   ),
+  //   iconBg: '#0f172a',
+  //   iconColor: '#38bdf8',
+  //   title: 'E-Commerce checkout testing',
+  //   desc: 'Test scenarios & bug reports for cart, payment, and order confirmation flows.',
+  //   demo: 'https://your-demo-link.com',
+  //   github: 'https://github.com/your-repo',
+  // },
+  // {
+  //   icon: (
+  //     <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+  //   ),
+  //   iconBg: '#0f172a',
+  //   iconColor: '#38bdf8',
+  //   title: 'API validation suite',
+  //   desc: 'Postman collections validating status codes, schema, and key response fields.',
+  //   demo: 'https://your-demo-link.com',
+  //   github: 'https://github.com/your-repo',
+  // },
   {
-    icon: (
-      <svg viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
-    ),
-    iconBg: '#0f172a',
-    iconColor: '#38bdf8',
-    title: 'E-Commerce checkout testing',
-    desc: 'Test scenarios & bug reports for cart, payment, and order confirmation flows.',
-    demo: 'https://your-demo-link.com',
-    github: 'https://github.com/your-repo',
-  },
-  {
-    icon: (
-      <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
-    ),
-    iconBg: '#0f172a',
-    iconColor: '#38bdf8',
-    title: 'API validation suite',
-    desc: 'Postman collections validating status codes, schema, and key response fields.',
-    demo: 'https://your-demo-link.com',
-    github: 'https://github.com/your-repo',
-  },
-  {
-    icon: (
-      <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-    ),
-    iconBg: '#0f172a',
-    iconColor: '#38bdf8',
-    title: 'Test automation framework',
-    desc: 'Selenium-based framework for automated regression testing across web apps.',
-    demo: 'https://your-demo-link.com',
-    github: 'https://github.com/your-repo',
-  },
+  icon: (
+    <svg viewBox="0 0 24 24">
+      <image href="https://opensource-demo.orangehrmlive.com/web/dist/favicon.ico?v=1763650546848" x="2" y="2" width="20" height="20" />
+    </svg>
+  ),
+  iconBg: '#f97316',
+  iconColor: '#ffffff',
+  title: 'OrangeHRM Login Automation',
+  desc: 'Selenium WebDriver automation project for OrangeHRM login page testing with valid login, invalid login, and empty field validation test cases.',
+  demo: 'https://janiii99.github.io/login_selenium',
+  github: 'https://github.com/JAniii99/login_selenium',
+}
 ]
 
 // ── Icons ─────────────────────────────────────────────────────────────────────
@@ -111,7 +113,7 @@ const IconGithub = () => (
 )
 
 // ── StatRing ──────────────────────────────────────────────────────────────────
-*/
+
 
 const SIZE = 100
 const R = 42
@@ -189,7 +191,7 @@ function StatRing({ stat, index }: { stat: Stat; index: number }) {
 }
 
 // ── ProjectCard ───────────────────────────────────────────────────────────────
-/*
+
 function ProjectCard({ project }: { project: Project }) {
   return (
     <article className="proj-card">
@@ -228,7 +230,7 @@ function ProjectCard({ project }: { project: Project }) {
 // Duplicate cards to create seamless infinite loop.
 // Kept here for future re-enablement or edits.
 const SLIDER_ITEMS = [...PROJECTS, ...PROJECTS, ...PROJECTS, ...PROJECTS]
-*/
+
 
 function ProjectsSection() {
   return (
@@ -242,7 +244,7 @@ function ProjectsSection() {
         ))}
       </div>
 
-      {/* Infinite slider hidden for future edits.
+      {
       <div className="projects-slider">
         <div className="projects-slider__track">
           {SLIDER_ITEMS.map((project, i) => (
@@ -250,7 +252,7 @@ function ProjectsSection() {
           ))}
         </div>
       </div>
-      */}
+      }
     </section>
   )
 }
